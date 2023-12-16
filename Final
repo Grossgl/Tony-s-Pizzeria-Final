@@ -1,0 +1,90 @@
+import tkinter as tk
+from tkinter import ttk
+from tkinter.messagebox import showinfo
+
+
+# root window
+root = tk.Tk()
+root.geometry('1000x1000')
+root.resizable(False, False)
+root.title("Tony's Pizzeria")
+
+
+
+#Second window
+def show_selected_option():     #Displays selected options on second window
+    showinfo(
+        title='Order Review',   # Name of new window
+        message=selected_option.get()  #Displays the selected variables
+    )
+
+
+selected_option = tk.StringVar()   #Defines the crust varaibles
+crusts = (('Hand Tossed', 'Hand Tossed'),
+         ('Thin Crust', 'Thin Crust'),
+         ('Deep Dish', 'Deep Dish'))
+         
+# label
+label = ttk.Label(text="What type of crust would you like?")  #ask for first variable
+label.pack(fill='x', padx=5, pady=5)
+
+# radio buttons
+for crust in crusts:
+    r = ttk.Radiobutton(
+        root,
+        text=crust[0],
+        value=crust[1],
+        variable=selected_option
+    )
+    r.pack(fill='x', padx=5, pady=5)   #location of radio button
+
+selected_option1 = tk.StringVar()  # defines the topping variable
+toppings = (('Pepperoni', 'Pepperoni'),
+         ('Sausage', 'Sausage'),
+         ('Cheese', 'Cheese'))
+         
+# label
+label1 = ttk.Label(text="What type of topping would you like?")  # ask for second variable
+label1.pack(fill='x', padx=6, pady=6)
+
+# radio buttons
+for top in toppings:
+    r = ttk.Radiobutton(
+        root,
+        text=top[0],
+        value=top[1],
+        variable=selected_option1
+    )
+    r.pack(fill='x', padx=6, pady=6)    #location of radio button
+ 
+
+selected_option2 = tk.StringVar()    # defines the drinks variable
+drinks = (('Pepsi', 'Pepsi'),
+         ('Mountain Dew', 'Mountain Dew'),
+         ('Water', 'Water'))
+         
+# label
+label2 = ttk.Label(text="What type of drink would you like?")  # ask for third variable
+label2.pack(fill='x', padx=7, pady=7)
+
+# radio buttons
+for drink in drinks:
+    r = ttk.Radiobutton(
+        root,
+        text=drink[0],
+        value=drink[1],
+        variable=selected_option2
+    )
+    r.pack(fill='x', padx=7, pady=7)  #location of radio button
+
+# button
+button = ttk.Button(        
+    root,
+    text="Get Selected Options",   # Gives button to display the selected options
+    command=show_selected_option   # tells the program which variables to display
+)
+
+
+button.pack(fill='x', padx=8, pady=8) # button location
+
+
